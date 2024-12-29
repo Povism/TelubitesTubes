@@ -1,0 +1,377 @@
+﻿<!-- Kelas: SI-48-INT  -->
+    <!-- Kelompok: 01  -->
+    <!--Anggota Kelompok: -->
+    <!-- 1. Maya Radina Putri (102022400015)  -->
+    <!-- 2. Nadila Naurah Rayyani Himawan (102022400145) -->
+    <!-- 3. Muhammad Fazshyerra Pradichwa Raksaragana (102022440006)-->
+    <!-- 4. Muhammad Mumtaz (102022400299) -->
+    <!-- 5. Naufal Ghazika Fadhlurahman (102022440016) -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CheckOut</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-color: #f8e9d1;
+            color: #333;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            margin-top: -20px;
+        }
+
+        .logo h1 {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .logo span.tel {
+            color: red;
+        }
+
+        .logo span.ubites {
+            color: black;
+        }
+
+        .profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .order-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 10px 0;
+            position: relative;
+        }
+
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .order-status {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .status {
+            font-size: 1rem;
+        }
+
+        .status span {
+            font-weight: bold;
+        }
+
+        .status .status-label {
+            color: black;
+        }
+
+        .status .status-value {
+            font-weight: bold;
+        }
+
+        .order-date {
+            font-size: 0.85rem;
+            color: black;
+        }
+
+        .order-number {
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .order-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .order-item img {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+
+        .item-details {
+            flex: 1;
+        }
+
+        .item-name {
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .item-price {
+            color: red;
+            font-weight: bold;
+        }
+
+        .payment-method {
+            display: flex;
+            justify-content: space-between;
+            background: #F9F9F9;
+            padding: 10px 15px;
+            border-radius: 10px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background: white;
+            border-top: 1px solid #ccc;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        .footer-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .total-section {
+            display: flex;
+            flex-direction: column;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .total-section .total-amount {
+            color: red;
+            font-size: 1.5rem;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .buttons button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .paid {
+            color: green;
+        }
+
+        .unpaid {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div>
+                <img src="Images/Logo.png" alt="UBites Logo" style="width: 150px; margin-right: 1rem;">
+            </div>
+            <div class="logo">
+                <h1><span class="u">WELCOME TO</span> <span class="tel">TEL</span>U BITES</h1>
+            </div>
+            <div class="profile">
+                <img src="images/admin.jpg" alt="Profile">
+                <p>Student</p>
+            </div>
+        </header>
+
+        <div class="order-container">
+            <div class="order-header">
+                <div class="order-status">
+                    <p class="status">
+                        <span class="status-label">Status:</span> <span id="status" class="status-value unpaid">Unpaid</span>
+                    </p>
+                    <p class="order-date" id="order-date">26 December 2024</p>
+                </div>
+                <p class="order-number" id="order-number">Order #0121</p>
+            </div>
+            <div class="order-item">
+                <img src="images/MieChickTeriy.png" alt="Mie Hot Plate Chicken Teriyaki">
+                <div class="item-details">
+                    <p class="item-name">Mie Hot Plate Chicken Teriyaki</p>
+                </div>
+                <div class="item-price">
+                    <span id="item1-price">21000</span>
+                </div>
+            </div>
+
+            <div class="order-item">
+                <img src="images/SotoD.png" alt="Beef Soto with Rice">
+                <div class="item-details">
+                    <p class="item-name">Beef Soto with Rice</p>
+                </div>
+                <div class="item-price">
+                    <span id="item2-price">21000</span>
+                </div>
+            </div>
+
+            <div class="order-item">
+                <img src="images/NasgorSeafood.png" alt="Nasi Goreng Seafood">
+                <div class="item-details">
+                    <p class="item-name">Nasi Goreng Seafood</p>
+                </div>
+                <div class="item-price">
+                    <span id="item3-price">23000</span>
+                </div>
+            </div>
+
+            <div class="order-item">
+                <img src="images/Mango.png" alt="Mango Juice">
+                <div class="item-details">
+                    <p class="item-name">Mango Juice</p>
+                </div>
+                <div class="item-price">
+                    <span id="item4-price">15000</span>
+                </div>
+            </div>
+
+            <div class="order-item">
+                <img src="images/VanillaMilk.png" alt="Vanilla Milkshake">
+                <div class="item-details">
+                    <p class="item-name">Vanilla Milkshake</p>
+                </div>
+                <div class="item-price">
+                    <span id="item5-price">23000</span>
+                </div>
+            </div>
+
+            <div class="order-item">
+                <img src="images/FruitCream.png" alt="Fruit Ice Cream">
+                <div class="item-details">
+                    <p class="item-name">Fruit Ice Cream</p>
+                </div>
+                <div class="item-price">
+                    <span id="item6-price">23000</span>
+                </div>
+            </div>
+
+            <div class="payment-method">
+                <p>Discount (10%)</p>
+                <p id="discount-value">12600</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="total-section">
+                <p>Total</p>
+                <p class="total-amount" id="total-amount">Rp. 113.400</p>
+            </div>
+            <div class="buttons">
+                <button onclick="window.location.href='Login.html'" class="LogOut">End</button>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function formatCurrency(amount) {
+            return "Rp. " + new Intl.NumberFormat('id-ID').format(amount);
+        }
+
+        function updatePaymentStatus(isPaid) {
+            const statusElement = document.getElementById('status');
+            if (isPaid) {
+                statusElement.innerText = 'Paid';
+                statusElement.classList.remove('unpaid');
+                statusElement.classList.add('paid');
+            } else {
+                statusElement.innerText = 'Unpaid';
+                statusElement.classList.remove('paid');
+                statusElement.classList.add('unpaid');
+            }
+        }
+
+        function setOrderDate(dateString) {
+            const date = new Date(dateString);
+            const formattedDate = date.toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'});
+            document.getElementById('order-date').innerText = formattedDate;
+        }
+
+        function setOrderNumber(orderNumber) {
+            document.getElementById('order-number').innerText = `Order #${orderNumber}`;
+        }
+
+        function updateTotal() {
+            const item1Price = parseFloat(document.getElementById("item1-price").innerText);
+            const item2Price = parseFloat(document.getElementById("item2-price").innerText);
+            const item3Price = parseFloat(document.getElementById("item3-price").innerText);
+            const item4Price = parseFloat(document.getElementById("item4-price").innerText);
+            const item5Price = parseFloat(document.getElementById("item5-price").innerText);
+            const item6Price = parseFloat(document.getElementById("item6-price").innerText);
+            const discount = 0.10;
+
+            const totalBeforeDiscount = item1Price + item2Price + item3Price + item4Price + item5Price + item6Price;
+            const discountValue = totalBeforeDiscount * discount;
+            const totalAfterDiscount = totalBeforeDiscount - discountValue;
+
+            document.getElementById("item1-price").innerText = formatCurrency(item1Price);
+            document.getElementById("item2-price").innerText = formatCurrency(item2Price);
+            document.getElementById("item3-price").innerText = formatCurrency(item3Price);
+            document.getElementById("item4-price").innerText = formatCurrency(item4Price);
+            document.getElementById("item5-price").innerText = formatCurrency(item5Price);
+            document.getElementById("item6-price").innerText = formatCurrency(item6Price);
+            document.getElementById("discount-value").innerText = formatCurrency(discountValue.toFixed(0));
+            document.getElementById("total-amount").innerText = formatCurrency(totalAfterDiscount.toFixed(0));
+        }
+
+        window.onload = function () {
+            updatePaymentStatus(true);
+            setOrderDate('2024-12-29');
+            setOrderNumber(121);
+            updateTotal();
+        };
+    </script>
+</body>
+</html>

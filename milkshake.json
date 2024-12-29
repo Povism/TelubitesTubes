@@ -1,0 +1,27 @@
+[
+    {
+        "id": 23,
+        "name":" Strawberry Milkshake",
+        "price": 23000,
+        "image": "Images/StrawberryMilk.png"
+    },
+    {
+        "id": 24,
+        "name":" Chocolate Milkshake",
+        "price": 23000,
+        "image": "Images/ChocoMilk.png"
+    },
+    {
+        "id": 25,
+        "name":" Vanilla Milkshake",
+        "price": 23000,
+        "image": "Images/VanillaMilk.png"
+    },
+    {
+        "id": 26,
+        "name":" Mango Milkshake",
+        "price": 23000,
+        "image": "Images/MangoMilk.png"
+    }
+
+]

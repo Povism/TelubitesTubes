@@ -1,0 +1,39 @@
+[
+    {
+        "id": 9,
+        "name":" Nasi Goreng Lada Hitam",
+        "price": 21000,
+        "image": "Images/Nasgor1.png"
+    },
+    {
+        "id": 10,
+        "name":" Nasi Goreng BBQ",
+        "price": 21000,
+        "image": "Images/Nasgor2.png"
+    },
+    {
+        "id": 11,
+        "name":" Nasi Goreng Ati Ampela",
+        "price": 21000,
+        "image": "Images/Nasgor3.png"
+    },
+    {
+        "id": 12,
+        "name":" Nasi Goreng Seafood",
+        "price": 23000,
+        "image": "Images/Nasgor4.png"
+    },
+    {
+        "id": 13,
+        "name":" Nasi Goreng Ayam Pedes",
+        "price": 21000,
+        "image": "Images/Nasgor5.png"
+    },
+    {
+        "id": 14,
+        "name":" Nasi Goreng Specical",
+        "price": 23000,
+        "image": "Images/Nasgor6.png"
+    }
+
+]

@@ -1,0 +1,311 @@
+<!-- Kelas: SI-48-INT  -->
+    <!-- Kelompok: 01  -->
+    <!--Anggota Kelompok: -->
+    <!-- 1. Maya Radina Putri (102022400015)  -->
+    <!-- 2. Nadila Naurah Rayyani Himawan (102022400145) -->
+    <!-- 3. Muhammad Fazshyerra Pradichwa Raksaragana (102022440006)-->
+    <!-- 4. Muhammad Mumtaz (102022400299) -->
+    <!-- 5. Naufal Ghazika Fadhlurahman (102022440016)-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Analysis</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8e9d1;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            background-color: #fff;
+        }
+
+        .header img {
+            width: 50px;
+            margin-right: 1rem;
+        }
+
+        .header input {
+            width: 200px;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 100px;
+            margin-right: 1rem;
+        }
+
+        .header .profile-img {
+            width: 30px;
+            border-radius: 50%;
+        }
+
+        .content-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            height: calc(100vh - 100px);
+            overflow-y: auto; 
+            padding-bottom: 30px;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 10px;
+            padding: 10px;
+            max-height: 400vh;
+        }
+
+        .main-chart {
+            grid-column: 1;
+            grid-row: 1 / 3;
+            background-color: #fff;
+            padding: 30px; 
+            border-radius: 10px;
+            text-align: center;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main-chart h2 {
+            font-size: 28px; 
+            font-weight: bold; 
+            margin-bottom: 20px; 
+            color: #333; 
+        }
+
+        canvas {
+            max-width: 85%;
+            height: auto;
+        }
+
+
+        .info-box {
+            background-color: #fff;
+            padding: 20px; 
+            border-radius: 10px;
+            text-align: center;
+            font-size: 12px; 
+            height: 150px; 
+            position: center;
+        }
+
+        .info-box canvas {
+            max-height: 100px; 
+            width: 100%; 
+        }
+
+        .info-box h3 {
+            margin: 0;
+            font-size: 20px;
+            position: center;
+
+        }
+
+        .info-box .number {
+            font-size: 15px; 
+            font-weight: bold;
+            position: center;
+
+        }
+
+        .info-box .chart {
+            height: 150px;
+            position: center;
+ 
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            background-color: #fff;
+            padding: 10px 0;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            color: #000;
+            font-size: 14px;
+        }
+
+        .footer button:hover {
+            color: #007BFF;
+        }
+
+        .footer button img {
+            height: 20px;
+        }
+
+        .footer button:focus {
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+        <div style="display: flex; align-items: center; justify-content: center; padding: 1rem; ">
+        <img src="images/Logo.png" alt="UBites Logo" style="width: 100px; margin-right: 1rem;">
+        <input id="search-bar" type="text" placeholder="Search Graph" style="width: 500px; padding: 0.5rem; border: 1px solid #ddd; border-radius: 30px; margin-right: 1rem;">        
+        <img src="images/admin.jpg" alt="Profile" style="width: 40px; border-radius: 50%;">
+    </div>
+
+    <div class="dashboard">
+        <div class="main-chart">
+            <h2>SALES AND DISTRIBUTION</h2>
+            <canvas id="salesChart"></canvas>
+        </div>
+        
+        <div class="info-box" data-title="Menu">
+            <h3>TOTAL MENU</h3>
+            <div class="number">29</div>
+            <div class="chart">
+                <canvas id="menuChart"></canvas>
+            </div>
+        </div>
+
+        <div class="info-box" data-title="Revenue">
+            <h3>TOTAL REVENUE</h3>
+            <div class="number">Rp. 8.090.000</div>
+            <div class="chart">
+                <canvas id="revenueChart"></canvas>
+            </div>
+        </div>
+
+        <div class="info-box" data-title="Order">
+            <h3>TOTAL ORDER</h3>
+            <div class="number">561</div>
+            <div class="chart">
+                <canvas id="orderChart"></canvas>
+            </div>
+        </div>
+
+        <div class="info-box" data-title="Customer">
+            <h3>TOTAL CUSTOMER</h3>
+            <div class="number">267</div>
+            <div class="chart">
+                <canvas id="customerChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const salesChartCtx = document.getElementById('salesChart').getContext('2d');
+        new Chart(salesChartCtx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [
+                    {
+                        label: 'Dataset 1',
+                        data: [300, 150, 200, 250, 100, 300, 200, 400, 300, 150, 250, 350],
+                        backgroundColor: 'rgba(0, 255, 0, 0.2)',
+                        borderColor: 'rgba(0, 255, 0, 1)',
+                        fill: true,
+                    },
+                    {
+                        label: 'Dataset 2',
+                        data: [150, 300, 100, 200, 300, 250, 150, 350, 400, 300, 200, 700],
+                        backgroundColor: 'rgba(128, 128, 128, 0.3)',
+                        borderColor: 'rgba(128, 128, 128, 1)',
+                        fill: true,
+                    },
+                ],
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: true,
+                    },
+                },
+            },
+        });
+
+        function createPieChart(canvasId) {
+            const ctx = document.getElementById(canvasId).getContext('2d');
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Completed', 'Remaining'],
+                    datasets: [
+                        {
+                            data: [75, 25],
+                            backgroundColor: ['rgba(0, 255, 0, 0.5)', 'rgba(200, 200, 200, 0.3)'],
+                            borderWidth: 1,
+                        },
+                    ],
+                },
+                options: {
+                    responsive: true,
+                    cutout: '70%',
+                },
+            });
+        }
+
+        createPieChart('menuChart');
+        createPieChart('revenueChart');
+        createPieChart('customerChart');
+        createPieChart('orderChart');
+
+        const searchBar = document.getElementById('search-bar');
+
+        searchBar.addEventListener('input', function() {
+            const query = searchBar.value.toLowerCase();
+            const infoBoxes = document.querySelectorAll('.info-box');
+            
+            infoBoxes.forEach(function(infoBox) {
+                const title = infoBox.getAttribute('data-title').toLowerCase();
+                if (title.includes(query)) {
+                    infoBox.style.display = 'block';
+                } else {
+                    infoBox.style.display = 'none';
+                }
+            });
+        });
+
+    </script>
+
+        <div class="footer">
+        <button onclick="window.location.href='dashboard.html'">
+            <img src="images/Home.png" alt="Dashboard Icon">
+            <p>Dashboard</p>
+        </button>
+        <button onclick="window.location.href='items.html'">
+            <img src="images/Items.png" alt="Items Icon">
+            <p>Items</p>
+        </button>
+        <button onclick="window.location.href='orders.html'">
+            <img src="images/Cart.png" alt="Orders Icon">
+            <p>Orders</p>
+        </button>
+        <button onclick="window.location.href='analysis.html'">
+            <img src="images/analysis.png" alt="Analysis Icon">
+            <p>Analysis</p>
+        </button>
+</div>
+</body>
+</html>

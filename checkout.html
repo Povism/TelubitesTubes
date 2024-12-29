@@ -1,0 +1,349 @@
+<!-- Kelas: SI-48-INT  -->
+    <!-- Kelompok: 01  -->
+    <!--Anggota Kelompok: -->
+    <!-- 1. Maya Radina Putri (102022400015)  -->
+    <!-- 2. Nadila Naurah Rayyani Himawan (102022400145) -->
+    <!-- 3. Muhammad Fazshyerra Pradichwa Raksaragana (102022440006)-->
+    <!-- 4. Muhammad Mumtaz (102022400299) -->
+    <!-- 5. Naufal Ghazika Fadhlurahman (102022440016) -->
+
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: Arial, sans-serif;
+            }
+    
+            body {
+                background-color: #FAEED2;
+                color: #333;
+                font-size: 16px;
+                line-height: 1;
+            }
+    
+            .container {
+                max-width: 1000px;
+                margin: 20px auto;
+                padding: 20px;
+            }
+    
+            header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: -70px;
+                margin-top: -20px;
+            }
+    
+            .logo h1 {
+                font-size: 2rem;
+                font-weight: bold;
+            }
+    
+            .logo span.tel {
+                color: red;
+            }
+    
+            .logo span.ubites {
+                color: black;
+            }
+    
+    
+            .profile {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+    
+            .profile img {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+    
+            h2 {
+                font-size: 1.5rem;
+                font-weight: bold;
+                margin: 20px 0;
+            }
+    
+            .order-item {
+                display: flex;
+                align-items: center;
+                background: white;
+                border-radius: 10px;
+                margin: 10px 0;
+                padding: 10px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+    
+            .order-item img {
+                width: 80px;
+                height: 80px;
+                border-radius: 10px;
+                margin-right: 15px;
+                object-fit: cover;
+            }
+    
+            .item-details {
+                flex: 1;
+            }
+    
+            .item-name {
+                font-weight: bold;
+                font-size: 1rem;
+            }
+    
+            .item-price {
+                color: red;
+            }
+    
+            .quantity {
+                display: flex;
+                align-items: center;
+            }
+    
+            .quantity button {
+                border: none;
+                background: none;
+                font-size: 1.2rem;
+                margin: 0 10px;
+                cursor: pointer;
+            }
+    
+            .quantity .minus {
+                color: red;
+            }
+    
+            .quantity .plus {
+                color: black;
+            }
+    
+            .payment-method {
+                display: flex;
+                justify-content: space-between;
+                background: #BFB39C;
+                padding: 20px 15px;
+                border-radius: 10px;
+                font-weight: bold;
+                color: white;
+                margin: 30px 0;
+                size: 60px;
+            }
+    
+    
+            footer {
+                background: white;
+                border-top: 1px solid #ccc;
+                box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+            }
+    
+            .footer-container {
+                max-width: 1000px;
+                margin: 0 auto;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+    
+            .total-section {
+                display: flex;
+                flex-direction: column;
+                font-size: 1.3rem;
+                font-weight: bold;
+                padding-bottom: 10px;
+                margin-bottom: -4px;
+            }
+    
+            .total-section .total-amount {
+                color: red;
+                font-size: 1.5rem;
+                margin-top: 11px;
+            }
+    
+            .buttons {
+                display: flex;
+                gap: 10px;
+            }
+    
+            .buttons button {
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                font-size: 1rem;
+                font-weight: bold;
+                cursor: pointer;
+                color: white;
+            }
+    
+    
+            .add-to-cart {
+                background-color: black;
+            }
+    
+            .checkout {
+                background-color: red;
+            }
+    </style>
+    
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <div>
+                    <img src="images/Logo.png" alt="UBites Logo" style="width: 150px; margin-right: 1rem;">
+                </div>
+                <div class="logo">
+                    <h1><span class="u">WELCOME TO</span> <span class="tel">TEL</span>U BITES</h1>
+                </div>
+                <div class="profile">
+                    <img src="images/admin.jpg" alt="Profile">
+                    <p>Student</p>
+                </div>
+            </header>
+    
+            <div class="checkoutLayout">
+                <div class="returnCart">
+                    <a href="javascript:history.back()" style="color: black; font-weight: bolder;">&larr; keep shopping</a>
+                    <h1>Your Order</h1>
+                    <div class="list">
+                        <!-- Cart items will be dynamically added here -->
+                    </div>
+                </div>
+    
+                <footer>
+                    <div class="footer-container">
+                        <div class="total-section">
+                            <div>Total Quantity: <span class="totalQuantity">0</span></div>
+                            <div>Total Price: <span class="totalPrice">Rp 0</span></div>
+                            <div><span class="paymentMethod">Payment Method: Cash</span></div>
+                        </div>
+                        <div class="buttons">
+                            <!-- Use a form to submit the checkout -->
+                            <form id="checkoutForm" method="POST" action="transactionhistory.html">
+                                <button type="submit" class="buttonCheckout">CHECKOUT</button>
+                            </form>
+                        </div>
+                    </div>
+                </footer> 
+            </div>
+        </div>
+    
+        <script>
+             let listCart = [];
+
+            function checkCart() {
+                var cookieValue = document.cookie
+                    .split('; ')
+                    .find(row => row.startsWith('listCart='));
+                if (cookieValue) {
+                    listCart = JSON.parse(cookieValue.split('=')[1]);
+                }
+            }
+            checkCart();
+            addCartToHTML();
+
+            function addCartToHTML() {
+                let listCartHTML = document.querySelector('.returnCart .list');
+                listCartHTML.innerHTML = '';
+
+                let totalQuantityHTML = document.querySelector('.totalQuantity');
+                let totalPriceHTML = document.querySelector('.totalPrice');
+                let discountHTML = document.querySelector('.discountPrice');
+                let paymentMethodHTML = document.querySelector('.paymentMethod');
+
+                let totalQuantity = 0;
+                let totalPrice = 0;
+                let discount = 0.1; 
+
+                if (listCart) {
+                    listCart.forEach(product => {
+                        if (product) {
+                            let newCart = document.createElement('div');
+                            newCart.classList.add('item');
+                            newCart.innerHTML = `
+                                <img src="${product.image}">
+                                <div class="info">
+                                    <div class="name">${product.name}</div>
+                                    <div class="price">Rp ${product.price.toLocaleString()}/1 item</div>
+                                </div>
+                                <div class="quantity">${product.quantity}</div>
+                                <div class="returnPrice">Rp ${(product.price * product.quantity).toLocaleString()}</div>`;
+                            listCartHTML.appendChild(newCart);
+
+                            totalQuantity += product.quantity;
+                            totalPrice += product.price * product.quantity;
+                        }
+                    });
+                }
+
+                let discountedPrice = totalPrice - (totalPrice * discount);
+
+                totalQuantityHTML.innerText = totalQuantity;
+                totalPriceHTML.innerText = `Rp ${discountedPrice.toLocaleString()} (after discount 10%)`;
+                paymentMethodHTML.innerText = "Payment Method: Cash";
+            }
+
+
+            function saveTransaction() {
+                let totalPrice = 0;
+                listCart.forEach(item => {
+                    totalPrice += item.price * item.quantity;
+                });
+
+                const transactionData = {
+                    items: listCart,
+                    total_amount: totalPrice,
+                    order_date: new Date().toLocaleString(),
+                    payment_method: 'Cash'
+                };
+
+                localStorage.setItem('transaction', JSON.stringify(transactionData));
+
+                console.log("Data disimpan di localStorage:", JSON.parse(localStorage.getItem('transaction')));
+            }
+
+            document.querySelector('.checkout').addEventListener('click', function () {
+                saveTransaction();
+                window.location.href = 'transactionhistory.html';  
+            });
+
+
+            document.querySelector('#checkoutForm').elements['items'].value = JSON.stringify(listCart);
+            document.querySelector('#checkoutForm').elements['total_amount'].value = totalPrice;
+
+            const transactionData = {
+                items: listCart,
+                total_amount: totalPrice,
+                order_date: new Date().toISOString(),
+                payment_method: 'Cash'
+            };
+
+            localStorage.setItem('transaction', JSON.stringify(transactionData));
+
+            console.log("Data disimpan di localStorage:", JSON.parse(localStorage.getItem('transaction')));
+
+            document.querySelector('.checkout').addEventListener('click', function () {
+            saveTransaction();
+            window.location.href = 'transactionhistory.html';  
+            });
+
+        </script>
+    </body>
+    </html>

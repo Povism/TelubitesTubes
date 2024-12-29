@@ -1,0 +1,21 @@
+[
+    {
+        "id": 27,
+        "name":" Fruit Ice Cream",
+        "price": 23000,
+        "image": "Images/FruitCream.png"
+    },
+    {
+        "id": 28,
+        "name":" Snack Ice Crem",
+        "price": 23000,
+        "image": "Images/SnackCream.png"
+    },
+    {
+        "id": 29,
+        "name":" Cookies Ice Cream",
+        "price": 23000,
+        "image": "Images/CookiesCream.png"
+    }
+
+]

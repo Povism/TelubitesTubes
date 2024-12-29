@@ -1,0 +1,217 @@
+<!-- Kelas: SI-48-INT  -->
+    <!-- Kelompok: 01  -->
+    <!--Anggota Kelompok: -->
+    <!-- 1. Maya Radina Putri (102022400015)  -->
+    <!-- 2. Nadila Naurah Rayyani Himawan (102022400145) -->
+    <!-- 3. Muhammad Fazshyerra Pradichwa Raksaragana (102022440006)-->
+    <!-- 4. Muhammad Mumtaz (102022400299) -->
+    <!-- 5. Naufal Ghazika Fadhlurahman (102022440016)-->
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <form action="login.php" method="POST">
+        </form>    
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TelUBites Login</title>
+        <style>
+            body {
+                font-family: 'Arial', 'Times';
+                background-color: #f8e9d1; 
+                margin: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+    
+            .container {
+                text-align: center;
+                width: 100%;
+                max-width: 400px;
+                padding: 20px;
+                border-radius: 10px;
+            }
+    
+            .logo {
+                margin-bottom: -40px;
+                margin-top: -90px;
+            }
+    
+            .logo img {
+                max-width: 230px;
+                height: auto;
+            }
+    
+            h1 {
+                font-size: 24px;
+                font-weight: bold;
+                margin: 15px 0;
+                margin-bottom: 40px;
+                color: #000;
+                font-weight: bold;
+            }
+    
+            h1 span.red {
+                color: #d32f2f; 
+                margin-bottom: 40px;
+                font-weight: bold;
+            }
+    
+            h1 span.black {
+                color: #000; 
+                margin-bottom: 40px;
+                font-weight: bold;
+            }
+    
+            .role-selector {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 15px 0;
+            }
+    
+            .role-selector button {
+                max-width: 400px; 
+                width: 100%;
+                padding: 12px;
+                font-size: 14px;
+                font-weight: bold;
+                border: none;
+                cursor: pointer;
+                color: white;
+                border-radius: 25px;
+                transition: all 0.3s ease-in-out;
+                margin-right: -15px; 
+                margin-bottom: 10px;
+                position: relative;
+                z-index: 1;
+            }
+    
+            .role-selector button:last-child {
+                margin-right: 0;
+            }
+    
+            .role-selector button.active {
+                background-color: #d32f2f;
+                z-index: 2;
+                transform: translateY(-5px); 
+            }
+    
+            .role-selector button.inactive {
+                background-color: #000; 
+            }
+    
+            .form-group {
+                margin: 10px 0;
+                position: center;
+            }
+    
+            .form-group input {
+                width: 100%;
+                padding: 10px;
+                font-size: 14px;
+                border: none;
+                border-radius: 25px;
+                outline: none;
+                background-color: white; 
+                color: #000;
+                text-align: center;
+                margin: 0 auto;
+                box-sizing: border-box;
+                
+            }
+    
+            .form-group input::placeholder {
+                color: #aaa;
+            }
+    
+            .login-btn {
+                margin-top: 20px;
+                width: 100%;
+                padding: 12px;
+                font-size: 16px;
+                font-weight: bold;
+                background-color: #d32f2f; 
+                color: white;
+                border: none;
+                border-radius: 25px;
+                cursor: pointer;
+                margin-bottom: 30px;
+            }
+    
+            .login-btn:hover {
+                background-color: #a40000; 
+            }
+            .signup-link {
+                margin-top: 20px;
+                color: #333;
+                font-size: 0.9rem;
+                text-decoration: none;
+            }
+            .signup-link:hover {
+                margin-top: 20px;
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="logo">
+                <img src="images/Logo.png" alt="Logo"> 
+            </div>
+            <h1>
+                WELCOME TO <span class="red">TEL</span><span class="black">U BITES</span>
+            </h1>
+            <form action="login.php" method="POST">
+                    <div class="role-selector">
+                        <button id="student" class="active" onclick="selectRole(event, 'student')" type="button">Student</button>
+                        <button id="admin" class="inactive" onclick="selectRole(event, 'admin')" type="button">Admin</button>
+                    </div>
+                    <input type="hidden" id="role" name="role" value="student">
+                    
+                    <div class="form-group">
+                        <input type="email" name="Email" placeholder="Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="Password" placeholder="Password" required>
+                    </div>
+            <button type="submit" class="login-btn">Login</button> 
+            </form>
+            <div class="login-link">
+                Didn't have an account? <a href="register.html">SignUp here</a>
+            </div>
+        </div>
+        </div>
+    
+        <script>
+            function selectRole(event, role) {
+                event.preventDefault();
+                const studentButton = document.getElementById("student");
+                const adminButton = document.getElementById("admin");
+                const roleInput = document.getElementById("role");
+    
+                if (role === "student") {
+                    studentButton.classList.add("active");
+                    studentButton.classList.remove("inactive");
+                    adminButton.classList.add("inactive");
+                    adminButton.classList.remove("active");
+                    roleInput.value = "student";
+                } else if (role === "admin") {
+                    adminButton.classList.add("active");
+                    adminButton.classList.remove("inactive");
+                    studentButton.classList.add("inactive");
+                    studentButton.classList.remove("active");
+                    roleInput.value = "admin";
+                }
+
+                event.target.classList.remove('inactive');
+                event.target.classList.add('active');
+
+                document.getElementById('role').value = role;
+            }
+
+        </script>
+    </body>
+    </html>

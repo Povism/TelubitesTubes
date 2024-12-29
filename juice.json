@@ -1,0 +1,51 @@
+[
+    {
+        "id": 15,
+        "name":" Guava Juice",
+        "price": 14000,
+        "image": "Images/Guava.png"
+    },
+    {
+        "id": 16,
+        "name":" Kweni Juice",
+        "price": 15000,
+        "image": "Images/Kweni.png"
+    },
+    {
+        "id": 17,
+        "name":" Mango Juice",
+        "price": 15000,
+        "image": "Images/Mango.png"
+    },
+    {
+        "id": 18,
+        "name":" Melon Juice",
+        "price": 14000,
+        "image": "Images/Melon.png"
+    },
+    {
+        "id": 19,
+        "name":" Pineapple Juice",
+        "price": 14000,
+        "image": "Images/Pineapple.png"
+    },
+    {
+        "id": 20,
+        "name":" Soursop Juice",
+        "price": 14000,
+        "image": "Images/Juice.png"
+    },
+    {
+        "id": 21,
+        "name":" Strawberry Juice",
+        "price": 15000,
+        "image": "Images/Strawberry.png"
+    },
+    {
+        "id": 22,
+        "name":" Healthy Juice",
+        "price": 15000,
+        "image": "Images/Healthy.png"
+    }
+
+]

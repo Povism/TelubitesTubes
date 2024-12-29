@@ -1,0 +1,39 @@
+[
+    {
+        "id": 1,
+        "name":" Mie Hot Plate Chicken Rica",
+        "price": 21000,
+        "image": "Images/miechicken.png"
+    },
+    {
+        "id": 2,
+        "name":" Mie Hot Plate Beef Rica",
+        "price": 23000,
+        "image": "Images/miebeef.png"
+    },
+    {
+        "id": 3,
+        "name":" Mie Hot Plate Chicken Teriyaki",
+        "price": 21000,
+        "image": "Images/miechickteriy.png"
+    },
+    {
+        "id": 4,
+        "name":" Mie Hot Plate Beef Teriyaki",
+        "price": 23000,
+        "image": "Images/miebeefteriy.png"
+    },
+    {
+        "id": 5,
+        "name":" Mie Hot Plate Chicken Lada Hitam",
+        "price": 21000,
+        "image": "Images/miechickpepper.png"
+    },
+    {
+        "id": 6,
+        "name":" Mie Hot Plate Beef Lada Hitam",
+        "price": 23000,
+        "image": "Images/miebeefpepper.png"
+    }
+
+]

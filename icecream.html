@@ -1,0 +1,419 @@
+﻿<!-- Kelas: SI-48-INT  -->
+    <!-- Kelompok: 01  -->
+    <!--Anggota Kelompok: -->
+    <!-- 1. Maya Radina Putri (102022400015)  -->
+    <!-- 2. Nadila Naurah Rayyani Himawan (102022400145) -->
+    <!-- 3. Muhammad Fazshyerra Pradichwa Raksaragana (102022440006)-->
+    <!-- 4. Muhammad Mumtaz (102022400299) -->
+    <!-- 5. Naufal Ghazika Fadhlurahman (102022440016) -->
+
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Menu - Ice Cream</title>
+        <link rel="stylesheet" href="style.css">
+    
+        <style>
+    
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: Arial, sans-serif;
+                background-color: #f8e9d1;
+                color: #333;
+            }
+    
+            .header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 1rem 2rem;
+            }
+    
+            .header-logo img {
+                width: 100px;
+            }
+    
+            .search-bar {
+                flex-grow: 1;
+                margin: 0 2rem;
+            }
+    
+            .search-bar input {
+                width: 100%;
+                padding: 0.5rem 1rem;
+                border: 1px solid #ddd;
+                border-radius: 30px;
+                outline: none;
+            }
+    
+            .profile img {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+            }
+            nav {
+                display: flex;
+                justify-content: center;
+                padding: 10px;
+                text-decoration: none;
+                margin-top: -40px;
+            }
+    
+            .nav-tab {
+                padding: 10px 20px;
+                margin: 0 10px;
+                color: black;
+                cursor: pointer;
+                font-size: 18px;
+                text-decoration: none;
+                transition: all 0.3s;
+            }
+    
+            .nav-tab .active{
+                border-bottom: 3px solid #d32f2f;
+            }
+    
+            .menu-items {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1rem;
+                justify-items: center;
+            }
+    
+            .menu-card {
+                text-align: center;
+                background-color: #fff;
+                border-radius: 10px;
+                padding: 1rem;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                width: 120px;
+            }
+    
+            .menu-card img {
+                width: 100%;
+                height: 80px;
+                object-fit: cover;
+                border-radius: 10px;
+                margin-bottom: 0.5rem;
+            }
+    
+            .menu-card p {
+                margin: 0.5rem 0;
+            }
+    
+            .menu-card .price {
+                color: red;
+                font-weight: bold;
+            }
+    
+            .pagination {
+                text-align: center;
+                margin: 20px 0;
+                font-size: 20px;
+            }
+    .menu-container {
+        padding-bottom: 80px; 
+    }
+    
+    .footer {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: white;
+        border-top: 1px solid #ddd;
+        padding: 1rem 0;
+        height: 80px; 
+    }
+    
+            .footer img {
+                width: 25px;
+                height: 25px;
+            }
+    
+            .footer p {
+                margin: 0;
+                font-size: 0.9rem;
+            }
+    
+            .footer div {
+                text-align: center;
+            }
+    
+    .actions {
+          display: none;
+          flex-direction: column;
+          align-items: center;
+          margin-top: 8px;
+        }
+        .quantity-selector {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          margin-bottom: 8px;
+        }
+        .quantity-selector button {
+          width: 32px;
+          height: 32px;
+          border: 1px solid #ddd;
+          border-radius: 50%;
+          background-color: #f8f8f8;
+          cursor: pointer;
+        }
+        .quantity-selector span {
+          font-size: 16px;
+        }
+        .add-to-cart {
+          background-color: red;
+          color: white;
+          padding: 8px 16px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+        .item.active .actions {
+          display: flex;
+        }
+        </style>
+    
+    </head>
+    <body>
+    
+        <div class="container">
+                <header class="main-header">
+                    <div class="header-logo">
+                        <img src="images/Logo.png" alt="UBites Logo">
+                    </div>
+                    <div class="search-bar">
+                        <input id="input" type="text" placeholder="Search Menu">
+                    </div>
+                    <div class="profile">
+                        <img src="images/admin.jpg" alt="Profile" class="profile">
+                    </div>
+                    <div class="iconCart">
+                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312"/>
+                          </svg>
+                          
+                        <div class="totalQuantity">0</div>
+                    </div>
+            </header>
+    
+            <br><br>
+            <nav>
+                <div><a href="juice.html"id="tab-juice" class="nav-tab" onclick="changeTab('juice')">Juice</a></div>
+                <div><a href="milkshake.html"id="tab-milkshake" class="nav-tab" onclick="changeTab('milkshake')">Milkshake</a></div>
+                <div><a href="icecream.html"id="tab-ice-cream" class="nav-tab" onclick="changeTab('icecream')"  style="font-weight: bolder;">Ice Cream</a></div>       
+            </nav>
+            <br>
+    
+            <div class="list listProduct menu-container">
+    
+                <div class="item menu-cards">
+                    <img src="images/icon.png" alt="">
+                    <h2>Test</h2>
+                    <div class="price">Rp 0</div>
+                    <button>Add To Cart</button>
+                </div>
+    
+            </div>
+        </div>
+    
+        <div class="cart">
+            <h2>
+                CART
+            </h2>
+    
+            <div class="listCart">
+    
+    
+                <div class="item">
+                    <img src="images/1.webp">
+                    <div class="content">
+                        <div class="name">CoPilot / Black / Automatic</div>
+                        <div class="price">$550 / 1 product</div>
+                    </div>
+                    <div class="quantity">
+                        <button>-</button>
+                        <span class="value">3</span>
+                        <button>+</button>
+                    </div>
+                </div>
+    
+    
+            </div>
+    
+            <div class="buttons">
+                <div class="close">
+                    CLOSE
+                </div>
+                <div class="checkout">
+                    <a href="checkout.html">CHECKOUT</a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="footer">
+            <div>
+                <a href="homepage.html">
+                    <img src="images/Home.png" alt="Gambar Button" style="width: 30px; height: 30px">
+                </a>
+                <p>Home</p>
+            </div> 
+            <div>
+                <a href="transactionhistory.html">
+                    <img src="images/Bag.png" alt="Gambar Button" style="width: 30px; height: 30px">
+                </a>
+                <p>History</p>
+            </div>
+            <div>
+                <a href="login.html">
+                    <img src="images/Logout2.png" alt="Gambar Button" style="width: 30px; height: 30px">
+                </a>
+                <p>Log Out</p>
+            </div> 
+        </div>
+    
+    
+        <script>
+            let list = document.querySelector('.listProduct'); 
+            let filter = document.querySelector('.search-bar input');
+            let count = document.querySelector('.totalQuantity');
+    
+            let listProducts = [];
+            let productFilter = [];
+            let listCart = [];
+    
+            fetch('icecream.json')
+                .then(response => response.json())
+                .then(data => {
+                    listProducts = data;
+                    productFilter = listProducts;
+                    showProduct(productFilter);
+                    checkCart();
+                    addCartToHTML();
+                })
+                .catch(error => console.error('Error fetching product data:', error));
+    
+            function showProduct(productFilter) {
+                list.innerHTML = '';
+                productFilter.forEach(item => {
+                    let newItem = document.createElement('div');
+                    newItem.classList.add('item'); 
+                    newItem.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}">
+                        <h2>${item.name}</h2>
+                        <div class="price">Rp ${item.price.toLocaleString()}</div>
+                        <button onclick="addCart(${item.id})">Add To Cart</button>
+                    `;
+                    list.appendChild(newItem);
+                });
+            }
+    
+            filter.addEventListener('input', function (event) {
+                const valueFilter = event.target.value.toLowerCase();
+                productFilter = listProducts.filter(item => item.name.toLowerCase().includes(valueFilter));
+                showProduct(productFilter);
+            });
+    
+            function checkCart() {
+                let cookieValue = document.cookie
+                    .split('; ')
+                    .find(row => row.startsWith('listCart='));
+                if (cookieValue) {
+                    listCart = JSON.parse(cookieValue.split('=')[1]);
+                } else {
+                    listCart = [];
+                }
+            }
+    
+            function addCart(productId) {
+                let product = listProducts.find(item => item.id === productId);
+                if (product) {
+                    if (!listCart[productId]) {
+                        listCart[productId] = { ...product, quantity: 1 };
+                    } else {
+                        listCart[productId].quantity++;
+                    }
+                }
+                updateCartCookie();
+                addCartToHTML();
+            }
+    
+            function updateCartCookie() {
+                document.cookie = "listCart=" + JSON.stringify(listCart) + "; expires=Thu, 31 Dec 2025 23:59:59 UTC; path=/;";
+            }
+    
+            function addCartToHTML() {
+                let listCartHTML = document.querySelector('.cart .listCart');
+                listCartHTML.innerHTML = '';
+                let totalQuantity = 0;
+    
+                if (listCart) {
+                    listCart.forEach(product => {
+                        if (product) {
+                            let newCart = document.createElement('div');
+                            newCart.classList.add('item'); 
+                            newCart.innerHTML = `
+                                <img src="${product.image}" alt="${product.name}">
+                                <div class="content">
+                                    <div class="name">${product.name}</div>
+                                    <div class="price">Rp ${product.price.toLocaleString()} / 1 item</div>
+                                </div>
+                                <div class="quantity">
+                                    <button onclick="changeQuantity(${product.id}, '-')">-</button>
+                                    <span class="value">${product.quantity}</span>
+                                    <button onclick="changeQuantity(${product.id}, '+')">+</button>
+                                </div>
+                            `;
+                            listCartHTML.appendChild(newCart);
+                            totalQuantity += product.quantity;
+                        }
+                    });
+                }
+                count.innerText = totalQuantity;
+            }
+    
+            function changeQuantity(productId, type) {
+                if (type === '+') {
+                    listCart[productId].quantity++;
+                } else if (type === '-') {
+                    listCart[productId].quantity--;
+                    if (listCart[productId].quantity <= 0) {
+                        delete listCart[productId];
+                    }
+                }
+                updateCartCookie();
+                addCartToHTML();
+            }
+    
+            let iconCart = document.querySelector('.iconCart');
+            let cart = document.querySelector('.cart');
+            let container = document.querySelector('.container');
+            let close = document.querySelector('.cart .close');
+    
+            iconCart.addEventListener('click', function () {
+                if (cart.style.right === '-100%') {
+                    cart.style.right = '0';
+                    container.style.transform = 'translateX(-400px)';
+                } else {
+                    cart.style.right = '-100%';
+                    container.style.transform = 'translateX(0)';
+                }
+            });
+    
+            close.addEventListener('click', function () {
+                cart.style.right = '-100%';
+                container.style.transform = 'translateX(0)';
+            });
+        </script>
+        
+        
+    </body>
+    </html>

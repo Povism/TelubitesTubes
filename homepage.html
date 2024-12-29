@@ -1,0 +1,155 @@
+
+<!-- Kelas: SI-48-INT  -->
+    <!-- Kelompok: 01  -->
+    <!--Anggota Kelompok: -->
+    <!-- 1. Maya Radina Putri (102022400015)  -->
+    <!-- 2. Nadila Naurah Rayyani Himawan (102022400145) -->
+    <!-- 3. Muhammad Fazshyerra Pradichwa Raksaragana (102022440006)-->
+    <!-- 4. Muhammad Mumtaz (102022400299) -->
+    <!-- 5. Naufal Ghazika Fadhlurahman (102022440016)-->
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Homepage</title>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: Arial, sans-serif;
+                background-color: #f8e9d1;
+                color: #333;
+            }
+            .category-img {
+                width: 80px;
+                height: 80px;
+                border-radius: 20px;
+                object-fit: cover;
+                margin-bottom: 0.5rem;
+            }
+            .category-container {
+                display: flex;
+                justify-content: center;
+                gap: 3rem; 
+                margin: 2rem 0;
+            }
+            .recommendation-container {
+                text-align: center;
+                margin: 3rem 0; 
+            }
+            .recommendation-card {
+                background-color: white;
+                margin: 1rem auto;
+                width: 300px;
+                padding: 1rem;
+                border-radius: 10px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .-container {
+                display: flex;
+                justify-content: center;
+                gap: 2rem; 
+                flex-wrap: wrap;
+                margin: 2rem;
+            
+            }
+            .footer {
+                display: flex;
+                justify-content: space-around;
+                padding: 1rem 0;
+                background-color: #fff;
+                border-top: 1px solid #ddd;
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+            }
+            .footer p {
+                margin: 0;
+                color: #555;
+                cursor: pointer;
+                justify-content: center;
+            }
+        </style>
+    </head>
+    <body>
+    
+       
+        <div style="display: flex; align-items: center; justify-content: center; padding: 1rem; ">
+            <img src="Images/Logo.png" alt="UBites Logo" style="width: 150px; margin-right: 1rem;">
+            <input id="search-bar" type="text" placeholder="Search Menu" style="width: 30%; padding: 0.5rem; border: 1px solid #ddd; border-radius: 30px; margin-right: 1rem;">
+            <img src="Images/admin.jpg" alt="Profile" style="width: 50px; border-radius: 60%;">
+        </div>    
+    
+    
+        <div class="category-container">
+            <div style="text-align: center;" class="menu-card">
+                <a href="mie.html">
+                    <img src="images/Food.png" alt="Food" style="width: 100px; height: auto; cursor: pointer;">
+                </a>
+                <p>Food</p>
+            </div>
+            <div style="text-align: center;" class="menu-card">
+                <a href="juice.html">
+                    <img src="images/Drink.png" alt="Drink" style="width: 100px; height: auto; cursor: pointer;">
+                </a>
+                <p>Drink</p>
+            </div>
+        </div>
+    
+        <div class="recommendation-container">
+            <h2 style="font-weight: bold;">Recommendation for you</h2>
+            <div class="recommendation-card">
+                <div>
+                    <p style="margin: 0;">Nasi Goreng Seafood</p>
+                    <span style="color: red; font-weight: bold;">Rp21.000</span>
+                </div>
+                <img src="Images/NasgorSeafood.png" alt="Nasi Goreng" style="width: 60px; height: 60px; border-radius: 8px;">
+            </div>
+        </div>
+    
+    
+        <div class="footer">
+            <div>
+                <a href="homepage.html">
+                    <img src="images/Home.png" alt="Gambar Button" style="width: 30px; height: 30px">
+                </a>
+                <p>Home</p>
+            </div> 
+            <div>
+                <a href="transactionhistory.html">
+                    <img src="images/Bag.png" alt="Gambar Button" style="width: 30px; height: 30px">
+                </a>
+                <p>History</p>
+            </div>
+            <div>
+                <a href="login.html">
+                    <img src="images/Logout2.png" alt="Gambar Button" style="width: 30px; height: 30px">
+                </a>
+                <p>Log Out</p>
+            </div> 
+        </div>
+        <script>
+            function filterMenu() {
+                const searchInput = document.getElementById('search-bar').value.toLowerCase(); 
+                const menuCards = document.querySelectorAll('.menu-card');
+        
+                menuCards.forEach(card => {
+                    const menuName = card.querySelector('p').textContent.toLowerCase(); 
+                    if (menuName.includes(searchInput)) {
+                        card.style.display = 'block'; 
+                    } else {
+                        card.style.display = 'none'; 
+                    }
+                });
+            }
+        
+            document.getElementById('search-bar').addEventListener('input', filterMenu);
+        </script>
+        
+    </body>
+    </html>

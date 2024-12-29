@@ -1,0 +1,126 @@
+<!-- Kelas: SI-48-INT  -->
+    <!-- Kelompok: 01  -->
+    <!--Anggota Kelompok: -->
+    <!-- 1. Maya Radina Putri (102022400015)  -->
+    <!-- 2. Nadila Naurah Rayyani Himawan (102022400145) -->
+    <!-- 3. Muhammad Fazshyerra Pradichwa Raksaragana (102022440006)-->
+    <!-- 4. Muhammad Mumtaz (102022400299) -->
+    <!-- 5. Naufal Ghazika Fadhlurahman (102022440016)-->
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TelUBites Sign Up</title>
+        <style>
+            body {
+                font-family: Arial, 'Times New Roman';
+                background-color: #f8e9d1;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+            .container {
+                text-align: center;
+                background-color: #f8e9d8;
+                padding: 2rem;
+                border-radius: 8px;
+            }
+            .container h1 {
+                color: #000;
+                font-size: 1.5rem;
+                margin-top: -14px;
+            }
+            .container h2 {
+                color: #e74c3c;
+                margin-top: -14px;
+
+            }
+            .form-group {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+            }
+            input[type="text"], input[type="email"], input[type="password"] {
+                width: 100%;
+                padding: 0.5rem;
+                margin: 0.5rem 0;
+                border: 0px solid #ccc;
+                border-radius: 25px;
+                justify-content: center;
+            }
+            .btn {
+                display: block;
+                width: 50%;
+                padding: 0.75rem;
+                margin: 1rem auto;
+                background-color: #a40000;
+                color: #fff;
+                border: none;
+                border-radius: 25px;
+                cursor: pointer;
+                font-size: 1rem;
+                text-align: center;
+            }
+            .btn:hover {
+                background-color: #d32f2f;
+            }
+            .login-link {
+                color: #333;
+                font-size: 0.9rem;
+                text-decoration: none;
+            }
+            .login-link:hover {
+                text-decoration: underline;
+            }
+    
+            .login-btn {
+                margin-top: 20px;
+                width: 100%;
+                padding: 12px;
+                font-size: 16px;
+                font-weight: bold;
+                background-color: #d32f2f; 
+                color: white;
+                border: none;
+                border-radius: 25px;
+                cursor: pointer;
+            }
+    
+            .login-btn:hover {
+                    background-color: #d32f2f;
+            }
+    
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <img src="images/Logo.png" alt="U Bites Logo" style="width: 160px;">
+            <h1 style="font-weight:bolder;">WELCOME TO <span style="color: #e74c3c;">TEL</span>U BITES</h1>
+            <h2 style="font-weight:1000; font-size: 15px; color:#e74c3c;">USER SIGN UP</h2>
+    
+            <form action='register.php' method="POST">
+                <div class="form-group">
+                    <input type="text" name="FullName" placeholder="Full Name" required />
+                    <input type="text" name="StudentID" placeholder="Student ID" required />
+                </div>
+                <div class="form-group">
+                    <input type="email" name="Email" placeholder="Email Address" required />
+                    <input type="password" name="Password" placeholder="Password" required />
+                </div>
+                <div class="form-group">
+                    <input type="password" name="ConfirmPassword" placeholder="Confirm Password" required/>
+                    <input type="text" name="UserType" placeholder="User Type" required/>
+                </div>
+                <button onclick="window.location.href='Login.html'" type="submit" class="btn">Sign Up</button>
+            </form>
+            <div class="login-link">
+                Already have an account? <a href="login.html">Login here</a>
+            </div>
+        </div>
+    </body>
+    </html>

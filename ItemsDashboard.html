@@ -1,0 +1,220 @@
+<!-- Kelas: SI-48-INT  -->
+    <!-- Kelompok: 01  -->
+    <!--Anggota Kelompok: -->
+    <!-- 1. Maya Radina Putri (102022400015)  -->
+    <!-- 2. Nadila Naurah Rayyani Himawan (102022400145) -->
+    <!-- 3. Muhammad Fazshyerra Pradichwa Raksaragana (102022440006)-->
+    <!-- 4. Muhammad Mumtaz (102022400299) -->
+    <!-- 5. Naufal Ghazika Fadhlurahman (102022440016)-->
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>UBites Admin Orders</title>
+        <style>
+            body {
+                margin: 0;
+                font-family: Arial, sans-serif;
+                background-color: #f7e9cd;
+            }
+    
+            header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 1rem 2rem;
+            }
+    
+            .header-logo img {
+                width: 100px;
+            }
+    
+            .search-bar {
+                flex-grow: 1;
+                margin: 0 2rem;
+            }
+    
+            .search-bar input {
+                width: 100%;
+                padding: 0.5rem 1rem;
+                border: 1px solid #ddd;
+                border-radius: 30px;
+                outline: none;
+            }
+    
+            .profile img {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+            }
+    
+            .main {
+                padding: 20px;
+            }
+    
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                background-color: #fff;
+            }
+    
+            th, td {
+                border: 1px solid #ccc;
+                padding: 10px;
+                text-align: left;
+            }
+    
+            th {
+                background-color: #f0f0f0;
+            }
+    
+            .actions {
+                display: inline-block;
+                padding: 5px 10px;
+                color: #fff;
+                text-decoration: solid;
+                border-radius: 5px;
+                text-align: center;
+            }
+    
+            .footer {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                width: 100%;
+                display: flex;
+                justify-content: space-around;
+                background-color: #fff;
+                padding: 10px 0;
+                box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+            }
+    
+            .footer button {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                background: none;
+                border: none;
+                cursor: pointer;
+                text-align: center;
+                color: #000;
+                font-size: 14px;
+            }
+    
+            .footer button:hover {
+                color: #007BFF;
+            }
+    
+            .footer button img {
+                height: 20px;
+            }
+    
+            .footer button:focus {
+                outline: none;
+            }
+    
+            .no-result {
+                color: red;
+                text-align: center;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+    
+        <div style="display: flex; align-items: center; justify-content: center; padding: 1rem;">
+            <img src="images/Logo.png" alt="UBites Logo" style="width: 120px; margin-right: 1rem;">
+            <input type="text" id="searchInput" placeholder="Search Menu" style="width: 50%; padding: 0.5rem; border: 1px solid #ddd; border-radius: 30px; margin-right: 1rem;" onkeyup="searchTable()">
+            <img src="images/admin.jpg" alt="Profile" style="width: 50px; border-radius: 50%;">
+        </div>
+    
+        <div class="main">
+            <div id="noResult" class="no-result" style="display: none;">No items found!</div>
+            <table id="itemsTable">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Items Name</th>
+                        <th>Price</th>
+                        <th>Types</th>
+                        <th>SubTypes</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+            
+                </tbody>
+            </table>
+        </div>
+    
+        <div class="footer">
+            <button onclick="window.location.href='dashboard.html'">
+                <img src="images/Home.png" alt="Dashboard Icon">
+                <p>Dashboard</p>
+            </button>
+            <button onclick="window.location.href='items.html'">
+                <img src="images/Items.png" alt="Items Icon">
+                <p>Items</p>
+            </button>
+            <button onclick="window.location.href='orders.html'">
+                <img src="images/Cart.png" alt="Orders Icon">
+                <p>Orders</p>
+            </button>
+            <button onclick="window.location.href='analysis.html'">
+                <img src="images/analysis.png" alt="Analysis Icon">
+                <p>Analysis</p>
+            </button>
+        </div>
+    
+        <script>
+            function searchTable() {
+                var input, filter, table, tr, td, i, txtValue;
+                input = document.getElementById("searchInput");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("itemsTable");
+                tr = table.getElementsByTagName("tr");
+                var found = false; 
+    
+                for (i = 1; i < tr.length; i++) { 
+                    td = tr[i].getElementsByTagName("td");
+                    if (td) {
+                        var itemName = td[0].textContent || td[0].innerText;
+                        var price = td[1].textContent || td[1].innerText;
+                        if (itemName.toUpperCase().indexOf(filter) > -1 || price.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                            found = true; 
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+    
+                var noResult = document.getElementById("noResult");
+                if (!found) {
+                    noResult.style.display = "block";
+                } else {
+                    noResult.style.display = "none";
+                }
+            }
+        fetch('ItemsDashboard.php')
+            .then(response => response.text())
+            .then(data => document.getElementById('itemsTable').innerHTML = data);
+
+        function updateItem(id) {
+            window.location.href = `updateItem.php?id=${id}`;
+        }
+
+        function deleteItem(id) {
+            if (confirm("Are you sure you want to delete this item?")) {
+                fetch(`deleteItems.php?id=${id}`, { method: 'GET' })
+                    .then(() => location.reload());
+            }
+        }
+        </script>
+    
+    </body>
+    </html>
+    

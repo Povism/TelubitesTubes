@@ -1,0 +1,14 @@
+[
+    {
+        "id": 7,
+        "name":"Chicken Soto with Rice",
+        "price": 21000,
+        "image": "Images/SotoA.png"
+    },
+    {
+        "id": 8,
+        "name":"Beef Soto with Rice",
+        "price": 21000,
+        "image": "Images/SotoD.png"
+    }
+]
